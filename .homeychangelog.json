@@ -3,6 +3,11 @@
     "en": "Initial release with EGA/EGB/PGB and XH-SGC01 support."
   },
   "1.0.4": {
-    "en": "fixed api comunication"
+    "en": "Fixed communication with the XHouse API.",
+    "sk": "Opravená komunikácia s XHouse API."
+  },
+  "1.1.0": {
+    "en": "No more re-entering the XHouse password: temporary login refusals (server busy, too many logins, network not ready after a reboot) are retried automatically with a back-off instead of being treated as a wrong password. Faster feedback: status every 15 s, every 1.5 s after a command and while the gate is moving, also when it was started by a remote. New icons and images, Slovak translation.",
+    "sk": "Už netreba znova zadávať heslo XHouse: dočasné odmietnutie prihlásenia (preťažený server, priveľa prihlásení, sieť po reštarte) sa automaticky opakuje s odstupom a už sa nevyhodnocuje ako zlé heslo. Rýchlejšia odozva: stav každých 15 s, po príkaze a počas pohybu brány každých 1,5 s, aj keď ju spustil ovládač. Nové ikony a obrázky, slovenský preklad."
   }
 }

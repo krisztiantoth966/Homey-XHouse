@@ -21,7 +21,7 @@ class XHouseGarageDriver extends Homey.Driver {
       acceptsDevice: isGarageOpener,
       capabilities: CAPABILITIES,
       defaultSettings: {
-        refresh_interval: 30,
+        refresh_interval: 15,
         debug_mode: false,
       },
     });

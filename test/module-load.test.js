@@ -44,7 +44,7 @@ test('all Homey runtime modules can be loaded', () => {
 test('refresh interval is clamped to the supported range', () => {
   withMockedHomey(() => {
     const { clampRefreshInterval } = require('../lib/base-xhouse-device');
-    assert.equal(clampRefreshInterval(undefined), 30);
+    assert.equal(clampRefreshInterval(undefined), 15);
     assert.equal(clampRefreshInterval(1), 5);
     assert.equal(clampRefreshInterval(31.4), 31);
     assert.equal(clampRefreshInterval(999), 300);

@@ -9,8 +9,9 @@
     "invalid_refresh_interval": "The refresh interval must be between 5 and 300 seconds.",
     "repair_required": "XHouse credentials are missing. Repair the device in Homey.",
     "device_offline": "The XHouse device is offline.",
-    "authentication_failed": "XHouse authentication failed. Repair the device in Homey.",
+    "authentication_failed": "XHouse rejected the email or password. The app keeps retrying; if the password was changed, repair the device.",
     "connection_failed": "XHouse connection failed.",
-    "stop_not_supported": "This XHouse controller does not support the Stop command."
+    "stop_not_supported": "This XHouse controller does not support the Stop command.",
+    "login_deferred": "XHouse temporarily refused the login. The app retries automatically, no action needed."
   }
 }

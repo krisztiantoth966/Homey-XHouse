@@ -25,7 +25,7 @@ function assertTranslation(value, location) {
   if (!value || typeof value !== 'object' || typeof value.en !== 'string' || !value.en.trim()) {
     fail(`${location} must contain a non-empty English translation.`);
   }
-  const supported = new Set(['en', 'nl', 'de', 'fr', 'it', 'sv', 'no', 'es', 'da', 'ru', 'pl', 'ko', 'ar']);
+  const supported = new Set(['en', 'nl', 'de', 'fr', 'it', 'sv', 'no', 'es', 'da', 'ru', 'pl', 'ko', 'ar', 'sk']);
   for (const locale of Object.keys(value || {})) {
     if (!supported.has(locale)) fail(`${location} uses unsupported Homey locale '${locale}'.`);
   }
@@ -115,7 +115,7 @@ for (const required of ['README.md', 'README.txt', 'INSTALLATION_SK.md', 'LICENS
 }
 if (!fs.existsSync(path.join(root, 'locales/en.json'))) fail('Missing English locale file.');
 for (const file of fs.readdirSync(path.join(root, 'locales'))) {
-  if (!['en.json', 'nl.json', 'de.json', 'fr.json', 'it.json', 'sv.json', 'no.json', 'es.json', 'da.json', 'ru.json', 'pl.json', 'ko.json', 'ar.json'].includes(file)) {
+  if (!['en.json', 'nl.json', 'de.json', 'fr.json', 'it.json', 'sv.json', 'no.json', 'es.json', 'da.json', 'ru.json', 'pl.json', 'ko.json', 'ar.json', 'sk.json'].includes(file)) {
     fail(`Unsupported locale file: ${file}.`);
   }
 }

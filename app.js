@@ -3,9 +3,15 @@
 const Homey = require('homey');
 
 const XHouseApi = require('./lib/xhouse-api');
+const { XHouseAuthError, XHouseLoginDeferredError } = require('./lib/errors');
+
+// Back-off between login attempts of one account after a failure.
+const LOGIN_BACKOFF_MS = [15000, 30000, 60000, 120000, 300000, 600000];
+const CREDENTIAL_RETRY_MS = 15 * 60 * 1000;
 
 class XHouseApp extends Homey.App {
   async onInit() {
+    this._captureLog();
     this._xhouseAccounts = new Map();
     this._stateTriggers = {
       open: this.homey.flow.getDeviceTriggerCard('gate_opened'),
@@ -36,6 +42,20 @@ class XHouseApp extends Homey.App {
       .registerRunListener(async ({ device }) => device.getAvailable());
 
     this.log('XHouse Gate app initialized.');
+  }
+
+  // Last log lines in memory, readable via GET /api/app/com.tothk.xhouse/log.
+  _captureLog() {
+    this.logLines = [];
+    const push = (level, args) => {
+      const text = args.map(a => (a instanceof Error ? a.message : typeof a === 'string' ? a : JSON.stringify(a))).join(' ');
+      this.logLines.push(`${new Date().toISOString()} ${level} ${text}`);
+      if (this.logLines.length > 400) this.logLines.splice(0, this.logLines.length - 400);
+    };
+    for (const level of ['log', 'error']) {
+      const original = console[level].bind(console);
+      console[level] = (...args) => { push(level === 'log' ? 'I' : 'E', args); original(...args); };
+    }
   }
 
   registerXHouseSession(email, session = {}) {
@@ -74,14 +94,34 @@ class XHouseApp extends Homey.App {
 
     if (account.loginPromise) return account.loginPromise;
 
+    const now = Date.now();
+    if (account.nextLoginAt && now < account.nextLoginAt) {
+      const seconds = Math.ceil((account.nextLoginAt - now) / 1000);
+      const ErrorType = account.credentialError ? XHouseAuthError : XHouseLoginDeferredError;
+      throw new ErrorType(`Next XHouse login attempt in ${seconds} s.`);
+    }
+
     account.loginPromise = (async () => {
       const api = new XHouseApi({ logger });
       try {
         const session = await api.login(email, loginPassword);
+        account.loginFailures = 0;
+        account.nextLoginAt = 0;
+        account.credentialError = false;
+        this.log('XHouse login successful.');
         return this.setXHouseSession(email, {
           ...session,
           password: loginPassword,
         });
+      } catch (error) {
+        account.loginFailures = (account.loginFailures || 0) + 1;
+        account.credentialError = error instanceof XHouseAuthError;
+        const delay = account.credentialError
+          ? CREDENTIAL_RETRY_MS
+          : LOGIN_BACKOFF_MS[Math.min(account.loginFailures - 1, LOGIN_BACKOFF_MS.length - 1)];
+        account.nextLoginAt = Date.now() + delay;
+        this.error(`XHouse login failed (${account.loginFailures}x), next try in ${Math.round(delay / 1000)} s: ${error.message}`);
+        throw error;
       } finally {
         api.close();
       }
@@ -104,6 +144,9 @@ class XHouseApp extends Homey.App {
         userId: null,
         password: null,
         loginPromise: null,
+        loginFailures: 0,
+        nextLoginAt: 0,
+        credentialError: false,
       });
     }
     return this._xhouseAccounts.get(key);

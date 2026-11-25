@@ -13,6 +13,12 @@ Neoficiálna Homey SDK v3 aplikácia na priame cloudové ovládanie brán a gar�
 
 Verzia 1.0.3 opravuje chybu `device.not.exist` pri EGA/EGB bránach. XHouse používa 18–19-ciferné identifikátory, ktoré bežný JavaScript `Number` zaokrúhli. Aplikácia ich teraz spracúva bez straty presnosti, skúša aj alternatívne ID v discovery odpovedi a dokáže automaticky opraviť zariadenie pridané staršou verziou.
 
+## Novinky vo verzii 1.1.0
+
+- Po reštarte Homey ani pri dočasnom výpadku XHouse cloudu netreba znova zadávať heslo. Dočasné odmietnutie prihlásenia sa opakuje automaticky s rastúcim odstupom (15 s až 10 min); opraviť zariadenie treba iba vtedy, keď XHouse naozaj odmietne e-mail alebo heslo.
+- Rýchlejšia odozva: bežná obnova každých 15 s, po príkaze a počas pohybu brány každých 1,5 s (aj keď bránu spustil diaľkový ovládač), najviac 2 minúty.
+- Nové ikony, obrázky a slovenský preklad.
+
 ## Funkcie
 
 - otvorenie, zatvorenie a zastavenie brány EGA/EGB/PGB
@@ -21,8 +27,8 @@ Verzia 1.0.3 opravuje chybu `device.not.exist` pri EGA/EGB bránach. XHouse pou�
 - poloha 0–100 %, ak ju zariadenie poskytuje
 - poloha ľavého a pravého krídla pri EGA
 - online/offline dostupnosť
-- bežný polling 5–300 sekúnd
-- rýchly polling každé 2 sekundy počas 30 sekúnd po príkaze
+- bežný polling 5–300 sekúnd (predvolene 15 s)
+- rýchly polling každých 1,5 sekundy po príkaze a počas pohybu brány
 - automatické obnovenie XHouse tokenu
 - pairing a repair cez XHouse email a heslo
 - vlastné Homey Flow karty

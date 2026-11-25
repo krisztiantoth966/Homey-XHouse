@@ -1,0 +1,17 @@
+{
+  "pair": {
+    "missing_credentials": "Zadajte XHouse e-mail a heslo.",
+    "login_failed": "Prihlásenie do XHouse zlyhalo.",
+    "login_first": "Najprv sa prihláste do XHouse.",
+    "device_not_found": "Spárované zariadenie sa v tomto XHouse účte nenašlo."
+  },
+  "errors": {
+    "invalid_refresh_interval": "Interval obnovy musí byť 5 až 300 sekúnd.",
+    "repair_required": "Chýbajú prihlasovacie údaje XHouse. Opravte zariadenie v Homey.",
+    "device_offline": "Zariadenie XHouse je offline.",
+    "authentication_failed": "XHouse odmietol e-mail alebo heslo. Appka to skúša ďalej; ak ste heslo zmenili, opravte zariadenie.",
+    "connection_failed": "Spojenie s XHouse zlyhalo.",
+    "stop_not_supported": "Tento ovládač XHouse nepodporuje príkaz Stop.",
+    "login_deferred": "XHouse dočasne odmietol prihlásenie. Appka to skúsi znova sama, nemusíte nič robiť."
+  }
+}

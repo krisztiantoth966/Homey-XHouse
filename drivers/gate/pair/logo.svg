@@ -1,10 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220">
-  <rect width="600" height="220" rx="32" fill="#1473E6"/>
-  <g fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" transform="translate(34 24) scale(.34)">
-    <path d="M72 410V105M428 410V105M72 125h356"/>
-    <path d="M99 170h136v202H99zM265 170h136v202H265z"/>
-    <path d="M167 170v202M333 170v202"/>
-  </g>
-  <text x="220" y="104" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" fill="#fff">XHouse</text>
-  <text x="222" y="148" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#DDEBFF">Gate for Homey</text>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#4f46e5"/></linearGradient></defs>
+  <rect width="600" height="220" rx="36" fill="url(#bg)"/>
+  <g transform="translate(40 20) scale(0.1875)"><g fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+    <!-- posts -->
+    <path d="M110 820V240M850 820V240" stroke-width="60"/>
+    <!-- wings with arched top -->
+    <path d="M170 380 Q 320 300 455 330 V760 H170 Z" stroke-width="52"/>
+    <path d="M790 380 Q 640 300 505 330 V760 H790 Z" stroke-width="52"/>
+    <path d="M265 370V760M360 340V760M600 340V760M695 370V760" stroke-width="34"/>
+    <!-- signal -->
+    <path d="M390 190 A130 130 0 0 1 570 190" stroke-width="44"/>
+    <path d="M330 130 A210 210 0 0 1 630 130" stroke-width="44"/>
+  </g></g>
+  <text x="250" y="132" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="64" font-weight="700" fill="#fff">XHouse</text>
 </svg>

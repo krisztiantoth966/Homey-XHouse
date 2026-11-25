@@ -1,6 +1,6 @@
 {
   "id": "com.tothk.xhouse",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "compatibility": ">=12.3.0",
   "sdk": 3,
   "runtime": "nodejs",
@@ -8,10 +8,12 @@
     "local"
   ],
   "name": {
-    "en": "XHouse"
+    "en": "XHouse",
+    "sk": "XHouse"
   },
   "description": {
-    "en": "Make every arrival part of your smart home."
+    "en": "Make every arrival part of your smart home.",
+    "sk": "Brána a garáž XHouse ako súčasť vašej smart domácnosti."
   },
   "category": "security",
   "tags": {
@@ -22,7 +24,7 @@
       "Giigle IoT"
     ]
   },
-  "brandColor": "#1473E6",
+  "brandColor": "#0EA5E9",
   "permissions": [],
   "images": {
     "small": "/assets/images/small.png",
@@ -36,7 +38,8 @@
     "xhouse_gate_state": {
       "type": "enum",
       "title": {
-        "en": "Gate state"
+        "en": "Gate state",
+        "sk": "Stav brány"
       },
       "getable": true,
       "setable": false,
@@ -46,45 +49,53 @@
         {
           "id": "closed",
           "title": {
-            "en": "Closed"
+            "en": "Closed",
+            "sk": "Zatvorená"
           }
         },
         {
           "id": "open",
           "title": {
-            "en": "Open"
+            "en": "Open",
+            "sk": "Otvorená"
           }
         },
         {
           "id": "opening",
           "title": {
-            "en": "Opening"
+            "en": "Opening",
+            "sk": "Otvára sa"
           }
         },
         {
           "id": "closing",
           "title": {
-            "en": "Closing"
+            "en": "Closing",
+            "sk": "Zatvára sa"
           }
         },
         {
           "id": "stopped",
           "title": {
-            "en": "Stopped"
+            "en": "Stopped",
+            "sk": "Zastavená"
           }
         },
         {
           "id": "unknown",
           "title": {
-            "en": "Unknown"
+            "en": "Unknown",
+            "sk": "Neznámy"
           }
         }
-      ]
+      ],
+      "icon": "/assets/gate.svg"
     },
     "xhouse_position": {
       "type": "number",
       "title": {
-        "en": "Gate position"
+        "en": "Gate position",
+        "sk": "Poloha brány"
       },
       "getable": true,
       "setable": false,
@@ -94,12 +105,14 @@
       "max": 100,
       "decimals": 0,
       "units": "%",
-      "step": 1
+      "step": 1,
+      "icon": "/assets/position.svg"
     },
     "xhouse_left_position": {
       "type": "number",
       "title": {
-        "en": "Left wing"
+        "en": "Left wing",
+        "sk": "Ľavé krídlo"
       },
       "getable": true,
       "setable": false,
@@ -109,12 +122,14 @@
       "max": 100,
       "decimals": 0,
       "units": "%",
-      "step": 1
+      "step": 1,
+      "icon": "/assets/wing-left.svg"
     },
     "xhouse_right_position": {
       "type": "number",
       "title": {
-        "en": "Right wing"
+        "en": "Right wing",
+        "sk": "Pravé krídlo"
       },
       "getable": true,
       "setable": false,
@@ -124,7 +139,8 @@
       "max": 100,
       "decimals": 0,
       "units": "%",
-      "step": 1
+      "step": 1,
+      "icon": "/assets/wing-right.svg"
     }
   },
   "flow": {
@@ -132,7 +148,8 @@
       {
         "id": "gate_opened",
         "title": {
-          "en": "The gate opened"
+          "en": "The gate opened",
+          "sk": "Brána sa otvorila"
         },
         "args": [
           {
@@ -146,14 +163,16 @@
             "name": "position",
             "type": "number",
             "title": {
-              "en": "Position"
+              "en": "Position",
+              "sk": "Poloha"
             }
           },
           {
             "name": "previous_state",
             "type": "string",
             "title": {
-              "en": "Previous state"
+              "en": "Previous state",
+              "sk": "Predchádzajúci stav"
             }
           }
         ]
@@ -161,7 +180,8 @@
       {
         "id": "gate_closed",
         "title": {
-          "en": "The gate closed"
+          "en": "The gate closed",
+          "sk": "Brána sa zatvorila"
         },
         "args": [
           {
@@ -175,14 +195,16 @@
             "name": "position",
             "type": "number",
             "title": {
-              "en": "Position"
+              "en": "Position",
+              "sk": "Poloha"
             }
           },
           {
             "name": "previous_state",
             "type": "string",
             "title": {
-              "en": "Previous state"
+              "en": "Previous state",
+              "sk": "Predchádzajúci stav"
             }
           }
         ]
@@ -190,7 +212,8 @@
       {
         "id": "gate_opening",
         "title": {
-          "en": "The gate started opening"
+          "en": "The gate started opening",
+          "sk": "Brána sa začala otvárať"
         },
         "args": [
           {
@@ -204,14 +227,16 @@
             "name": "position",
             "type": "number",
             "title": {
-              "en": "Position"
+              "en": "Position",
+              "sk": "Poloha"
             }
           },
           {
             "name": "previous_state",
             "type": "string",
             "title": {
-              "en": "Previous state"
+              "en": "Previous state",
+              "sk": "Predchádzajúci stav"
             }
           }
         ]
@@ -219,7 +244,8 @@
       {
         "id": "gate_closing",
         "title": {
-          "en": "The gate started closing"
+          "en": "The gate started closing",
+          "sk": "Brána sa začala zatvárať"
         },
         "args": [
           {
@@ -233,14 +259,16 @@
             "name": "position",
             "type": "number",
             "title": {
-              "en": "Position"
+              "en": "Position",
+              "sk": "Poloha"
             }
           },
           {
             "name": "previous_state",
             "type": "string",
             "title": {
-              "en": "Previous state"
+              "en": "Previous state",
+              "sk": "Predchádzajúci stav"
             }
           }
         ]
@@ -248,7 +276,8 @@
       {
         "id": "gate_stopped",
         "title": {
-          "en": "The gate stopped"
+          "en": "The gate stopped",
+          "sk": "Brána sa zastavila"
         },
         "args": [
           {
@@ -262,14 +291,16 @@
             "name": "position",
             "type": "number",
             "title": {
-              "en": "Position"
+              "en": "Position",
+              "sk": "Poloha"
             }
           },
           {
             "name": "previous_state",
             "type": "string",
             "title": {
-              "en": "Previous state"
+              "en": "Previous state",
+              "sk": "Predchádzajúci stav"
             }
           }
         ]
@@ -277,7 +308,8 @@
       {
         "id": "gate_online",
         "title": {
-          "en": "The gate came online"
+          "en": "The gate came online",
+          "sk": "Brána je online"
         },
         "args": [
           {
@@ -290,7 +322,8 @@
       {
         "id": "gate_offline",
         "title": {
-          "en": "The gate went offline"
+          "en": "The gate went offline",
+          "sk": "Brána je offline"
         },
         "args": [
           {
@@ -305,7 +338,8 @@
       {
         "id": "gate_is_state",
         "title": {
-          "en": "The gate state is !{{|not}}"
+          "en": "The gate state is !{{|not}}",
+          "sk": "Stav brány !{{je|nie je}}"
         },
         "args": [
           {
@@ -317,56 +351,65 @@
             "type": "dropdown",
             "name": "state",
             "title": {
-              "en": "State"
+              "en": "State",
+              "sk": "Stav"
             },
             "values": [
               {
                 "id": "closed",
                 "title": {
-                  "en": "Closed"
+                  "en": "Closed",
+                  "sk": "Zatvorená"
                 }
               },
               {
                 "id": "open",
                 "title": {
-                  "en": "Open"
+                  "en": "Open",
+                  "sk": "Otvorená"
                 }
               },
               {
                 "id": "opening",
                 "title": {
-                  "en": "Opening"
+                  "en": "Opening",
+                  "sk": "Otvára sa"
                 }
               },
               {
                 "id": "closing",
                 "title": {
-                  "en": "Closing"
+                  "en": "Closing",
+                  "sk": "Zatvára sa"
                 }
               },
               {
                 "id": "stopped",
                 "title": {
-                  "en": "Stopped"
+                  "en": "Stopped",
+                  "sk": "Zastavená"
                 }
               },
               {
                 "id": "unknown",
                 "title": {
-                  "en": "Unknown"
+                  "en": "Unknown",
+                  "sk": "Neznámy"
                 }
               }
             ]
           }
         ],
         "titleFormatted": {
-          "en": "The gate state is [[state]]"
+          "en": "The gate state is [[state]]",
+          "sk": "Stav brány je [[state]]"
         }
       },
       {
         "id": "gate_is_online",
         "title": {
-          "en": "The gate is !{{online|offline}}"
+          "en": "The gate is !{{online|offline}}",
+          "sk": "Brána je !{{online|offline}}"
         },
         "args": [
           {
@@ -381,7 +424,8 @@
       {
         "id": "open_gate",
         "title": {
-          "en": "Open the gate"
+          "en": "Open the gate",
+          "sk": "Otvoriť bránu"
         },
         "highlight": true,
         "args": [
@@ -395,7 +439,8 @@
       {
         "id": "close_gate",
         "title": {
-          "en": "Close the gate"
+          "en": "Close the gate",
+          "sk": "Zatvoriť bránu"
         },
         "highlight": true,
         "args": [
@@ -409,7 +454,8 @@
       {
         "id": "stop_gate",
         "title": {
-          "en": "Stop the gate"
+          "en": "Stop the gate",
+          "sk": "Zastaviť bránu"
         },
         "highlight": true,
         "args": [
@@ -423,7 +469,8 @@
       {
         "id": "refresh_gate",
         "title": {
-          "en": "Refresh gate status"
+          "en": "Refresh gate status",
+          "sk": "Obnoviť stav brány"
         },
         "args": [
           {
@@ -438,7 +485,8 @@
   "drivers": [
     {
       "name": {
-        "en": "XHouse Gate (EGA/EGB)"
+        "en": "XHouse Gate (EGA/EGB)",
+        "sk": "XHouse brána (EGA/EGB)"
       },
       "class": "garagedoor",
       "connectivity": [
@@ -452,10 +500,12 @@
           "id": "refresh_interval",
           "type": "number",
           "label": {
-            "en": "Refresh interval (seconds)"
+            "en": "Refresh interval (seconds)",
+            "sk": "Interval obnovy (sekundy)"
           },
           "hint": {
-            "en": "Normal polling interval. After a command the app temporarily polls every 2 seconds."
+            "en": "Normal polling interval. After a command and while the gate moves, the app checks every 1.5 seconds.",
+            "sk": "Bežný interval obnovy stavu. Po príkaze a počas pohybu brány appka kontroluje stav každých 1,5 sekundy."
           },
           "value": 30,
           "attr": {
@@ -468,10 +518,12 @@
           "id": "debug_mode",
           "type": "checkbox",
           "label": {
-            "en": "Debug logging"
+            "en": "Debug logging",
+            "sk": "Ladiace logovanie"
           },
           "hint": {
-            "en": "Enable only while troubleshooting."
+            "en": "Enable only while troubleshooting.",
+            "sk": "Zapnite iba pri riešení problémov."
           },
           "value": false
         }
@@ -483,16 +535,20 @@
           "options": {
             "logo": "logo.svg",
             "usernameLabel": {
-              "en": "XHouse email"
+              "en": "XHouse email",
+              "sk": "XHouse e-mail"
             },
             "usernamePlaceholder": {
-              "en": "name@example.com"
+              "en": "name@example.com",
+              "sk": "meno@priklad.sk"
             },
             "passwordLabel": {
-              "en": "XHouse password"
+              "en": "XHouse password",
+              "sk": "XHouse heslo"
             },
             "passwordPlaceholder": {
-              "en": "Password"
+              "en": "Password",
+              "sk": "Heslo"
             }
           }
         },
@@ -518,16 +574,20 @@
           "options": {
             "logo": "logo.svg",
             "usernameLabel": {
-              "en": "XHouse email"
+              "en": "XHouse email",
+              "sk": "XHouse e-mail"
             },
             "usernamePlaceholder": {
-              "en": "name@example.com"
+              "en": "name@example.com",
+              "sk": "meno@priklad.sk"
             },
             "passwordLabel": {
-              "en": "XHouse password"
+              "en": "XHouse password",
+              "sk": "XHouse heslo"
             },
             "passwordPlaceholder": {
-              "en": "Password"
+              "en": "Password",
+              "sk": "Heslo"
             }
           }
         }
@@ -543,12 +603,14 @@
       "capabilitiesOptions": {
         "garagedoor_closed": {
           "title": {
-            "en": "Gate closed"
+            "en": "Gate closed",
+            "sk": "Brána zatvorená"
           }
         },
         "windowcoverings_state": {
           "title": {
-            "en": "Gate control"
+            "en": "Gate control",
+            "sk": "Ovládanie brány"
           }
         }
       },
@@ -561,7 +623,8 @@
     },
     {
       "name": {
-        "en": "XHouse Garage Opener (XH-SGC01)"
+        "en": "XHouse Garage Opener (XH-SGC01)",
+        "sk": "XHouse garáž (XH-SGC01)"
       },
       "class": "garagedoor",
       "connectivity": [
@@ -575,10 +638,12 @@
           "id": "refresh_interval",
           "type": "number",
           "label": {
-            "en": "Refresh interval (seconds)"
+            "en": "Refresh interval (seconds)",
+            "sk": "Interval obnovy (sekundy)"
           },
           "hint": {
-            "en": "Normal polling interval. After a command the app temporarily polls every 2 seconds."
+            "en": "Normal polling interval. After a command and while the gate moves, the app checks every 1.5 seconds.",
+            "sk": "Bežný interval obnovy stavu. Po príkaze a počas pohybu brány appka kontroluje stav každých 1,5 sekundy."
           },
           "value": 30,
           "attr": {
@@ -591,10 +656,12 @@
           "id": "debug_mode",
           "type": "checkbox",
           "label": {
-            "en": "Debug logging"
+            "en": "Debug logging",
+            "sk": "Ladiace logovanie"
           },
           "hint": {
-            "en": "Enable only while troubleshooting."
+            "en": "Enable only while troubleshooting.",
+            "sk": "Zapnite iba pri riešení problémov."
           },
           "value": false
         }
@@ -606,16 +673,20 @@
           "options": {
             "logo": "logo.svg",
             "usernameLabel": {
-              "en": "XHouse email"
+              "en": "XHouse email",
+              "sk": "XHouse e-mail"
             },
             "usernamePlaceholder": {
-              "en": "name@example.com"
+              "en": "name@example.com",
+              "sk": "meno@priklad.sk"
             },
             "passwordLabel": {
-              "en": "XHouse password"
+              "en": "XHouse password",
+              "sk": "XHouse heslo"
             },
             "passwordPlaceholder": {
-              "en": "Password"
+              "en": "Password",
+              "sk": "Heslo"
             }
           }
         },
@@ -641,16 +712,20 @@
           "options": {
             "logo": "logo.svg",
             "usernameLabel": {
-              "en": "XHouse email"
+              "en": "XHouse email",
+              "sk": "XHouse e-mail"
             },
             "usernamePlaceholder": {
-              "en": "name@example.com"
+              "en": "name@example.com",
+              "sk": "meno@priklad.sk"
             },
             "passwordLabel": {
-              "en": "XHouse password"
+              "en": "XHouse password",
+              "sk": "XHouse heslo"
             },
             "passwordPlaceholder": {
-              "en": "Password"
+              "en": "Password",
+              "sk": "Heslo"
             }
           }
         }
@@ -663,7 +738,8 @@
       "capabilitiesOptions": {
         "garagedoor_closed": {
           "title": {
-            "en": "Garage door closed"
+            "en": "Garage door closed",
+            "sk": "Garáž zatvorená"
           }
         }
       },
@@ -682,5 +758,11 @@
         "website": "https://github.com/BenJamesAndo/XHouse-IoT-Controller"
       }
     ]
+  },
+  "api": {
+    "getLog": {
+      "method": "GET",
+      "path": "/log"
+    }
   }
 }

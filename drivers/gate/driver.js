@@ -28,7 +28,7 @@ class XHouseGateDriver extends Homey.Driver {
       acceptsDevice: isBleGate,
       capabilities: device => (isEga(device) ? EGA_CAPABILITIES : BASE_CAPABILITIES),
       defaultSettings: {
-        refresh_interval: 30,
+        refresh_interval: 15,
         debug_mode: false,
       },
     });
