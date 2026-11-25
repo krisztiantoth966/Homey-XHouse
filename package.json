@@ -1,0 +1,17 @@
+{
+  "name": "com.tothk.xhouse",
+  "version": "1.0.4",
+  "private": true,
+  "description": "Homey SDK v3 app for XHouse / Giigle IoT gate controllers",
+  "main": "app.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "check:syntax": "find . -path ./node_modules -prune -o -name '*.js' -type f -print0 | xargs -0 -n1 node --check",
+    "check:static": "node tools/static-check.js",
+    "test": "node --test test/*.test.js",
+    "validate": "npm run check:syntax && npm run check:static && npm test"
+  }
+}

@@ -1,0 +1,7 @@
+.git
+.github
+node_modules
+test
+tools
+*.zip
+.DS_Store

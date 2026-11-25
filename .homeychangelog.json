@@ -1,0 +1,8 @@
+{
+  "1.0.0": {
+    "en": "Initial release with EGA/EGB/PGB and XH-SGC01 support."
+  },
+  "1.0.4": {
+    "en": "fixed api comunication"
+  }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 220">
+  <rect width="600" height="220" rx="32" fill="#1473E6"/>
+  <g fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" transform="translate(34 24) scale(.34)">
+    <path d="M72 410V105M428 410V105M72 125h356"/>
+    <path d="M99 170h136v202H99zM265 170h136v202H265z"/>
+    <path d="M167 170v202M333 170v202"/>
+  </g>
+  <text x="220" y="104" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" fill="#fff">XHouse</text>
+  <text x="222" y="148" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#DDEBFF">Gate for Homey</text>
+</svg>

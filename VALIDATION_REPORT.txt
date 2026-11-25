@@ -1,0 +1,56 @@
+XHouse Gate for Homey v1.0.3
+Validation date: 2026-08-27
+
+FIX INCLUDED IN THIS BUILD
+- Preserves XHouse 18-19 digit user and device IDs without JavaScript Number
+  precision loss.
+- Sends those identifiers back to the XHouse API as exact numeric JSON tokens.
+- Tries all device identifiers returned by XHouse discovery (id, deviceId,
+  wifiDeviceId and compatible nested variants).
+- Automatically rediscovers and repairs a device paired by v1.0.2 with a
+  rounded/obsolete ID after receiving `device.not.exist`.
+- Refuses automatic recovery when multiple physical gates are equally likely,
+  preventing control of the wrong gate.
+
+COMPLETED CHECKS
+- JavaScript syntax check: PASSED
+- Static Homey manifest/package check: PASSED
+- App/driver image dimensions: PASSED
+- JSON parsing and required file check: PASSED
+- Unit tests: 27 PASSED, 0 FAILED
+- Tested logic includes:
+  * XHouse HMAC-MD5 signature generation
+  * required phone-time format
+  * authentication/offline/device-not-found error classification
+  * exact parsing and serialization of 64-bit XHouse IDs
+  * alternate device-ID resolution after `device.not.exist`
+  * backward-compatible migration of a rounded v1.0.2 device ID
+  * rejection of ambiguous automatic gate matching
+  * EGA/EGB/PGB/XH-SGC01 device-family detection
+  * EGA and EGB1900 status-frame parsing
+  * gate-mode parsing from menuCode
+  * Open/Close/Stop BLE command frames
+  * Homey runtime module loading with a mocked SDK
+  * refresh-interval limits
+  * shared XHouse session handling for multiple devices
+  * concurrent login de-duplication
+
+NOT EXECUTED IN THE BUILD ENVIRONMENT
+- Official `homey app validate`, because Homey CLI is not installed in the
+  isolated build container.
+- Live login against the user's XHouse account.
+- Live installation on the user's Homey Pro.
+- Physical Open/Close/Stop test on the user's gate.
+
+REQUIRED HARDWARE CHECK
+1. Run: npm run validate
+2. Run: homey app validate
+3. Run with logs: homey app run
+4. Leave the existing device in Homey first. The app should automatically
+   rediscover the exact ID and make it available.
+5. If automatic recovery cannot identify the device uniquely, use Try to
+   Repair. If needed, remove the old Gate device and pair it once again.
+6. Test Open, Stop and Close while in visual range of the gate.
+
+This is an unofficial cloud integration. Its operation depends on the
+reverse-engineered XHouse/Giigle IoT API remaining compatible.

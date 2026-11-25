@@ -1,0 +1,686 @@
+{
+  "id": "com.tothk.xhouse",
+  "version": "1.0.4",
+  "compatibility": ">=12.3.0",
+  "sdk": 3,
+  "runtime": "nodejs",
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "XHouse"
+  },
+  "description": {
+    "en": "Make every arrival part of your smart home."
+  },
+  "category": "security",
+  "tags": {
+    "en": [
+      "XHouse",
+      "gate",
+      "garage",
+      "Giigle IoT"
+    ]
+  },
+  "brandColor": "#1473E6",
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Krisztián Tóth"
+  },
+  "capabilities": {
+    "xhouse_gate_state": {
+      "type": "enum",
+      "title": {
+        "en": "Gate state"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "values": [
+        {
+          "id": "closed",
+          "title": {
+            "en": "Closed"
+          }
+        },
+        {
+          "id": "open",
+          "title": {
+            "en": "Open"
+          }
+        },
+        {
+          "id": "opening",
+          "title": {
+            "en": "Opening"
+          }
+        },
+        {
+          "id": "closing",
+          "title": {
+            "en": "Closing"
+          }
+        },
+        {
+          "id": "stopped",
+          "title": {
+            "en": "Stopped"
+          }
+        },
+        {
+          "id": "unknown",
+          "title": {
+            "en": "Unknown"
+          }
+        }
+      ]
+    },
+    "xhouse_position": {
+      "type": "number",
+      "title": {
+        "en": "Gate position"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "min": 0,
+      "max": 100,
+      "decimals": 0,
+      "units": "%",
+      "step": 1
+    },
+    "xhouse_left_position": {
+      "type": "number",
+      "title": {
+        "en": "Left wing"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "min": 0,
+      "max": 100,
+      "decimals": 0,
+      "units": "%",
+      "step": 1
+    },
+    "xhouse_right_position": {
+      "type": "number",
+      "title": {
+        "en": "Right wing"
+      },
+      "getable": true,
+      "setable": false,
+      "insights": true,
+      "uiComponent": "sensor",
+      "min": 0,
+      "max": 100,
+      "decimals": 0,
+      "units": "%",
+      "step": 1
+    }
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "gate_opened",
+        "title": {
+          "en": "The gate opened"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "position",
+            "type": "number",
+            "title": {
+              "en": "Position"
+            }
+          },
+          {
+            "name": "previous_state",
+            "type": "string",
+            "title": {
+              "en": "Previous state"
+            }
+          }
+        ]
+      },
+      {
+        "id": "gate_closed",
+        "title": {
+          "en": "The gate closed"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "position",
+            "type": "number",
+            "title": {
+              "en": "Position"
+            }
+          },
+          {
+            "name": "previous_state",
+            "type": "string",
+            "title": {
+              "en": "Previous state"
+            }
+          }
+        ]
+      },
+      {
+        "id": "gate_opening",
+        "title": {
+          "en": "The gate started opening"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "position",
+            "type": "number",
+            "title": {
+              "en": "Position"
+            }
+          },
+          {
+            "name": "previous_state",
+            "type": "string",
+            "title": {
+              "en": "Previous state"
+            }
+          }
+        ]
+      },
+      {
+        "id": "gate_closing",
+        "title": {
+          "en": "The gate started closing"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "position",
+            "type": "number",
+            "title": {
+              "en": "Position"
+            }
+          },
+          {
+            "name": "previous_state",
+            "type": "string",
+            "title": {
+              "en": "Previous state"
+            }
+          }
+        ]
+      },
+      {
+        "id": "gate_stopped",
+        "title": {
+          "en": "The gate stopped"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ],
+        "tokens": [
+          {
+            "name": "position",
+            "type": "number",
+            "title": {
+              "en": "Position"
+            }
+          },
+          {
+            "name": "previous_state",
+            "type": "string",
+            "title": {
+              "en": "Previous state"
+            }
+          }
+        ]
+      },
+      {
+        "id": "gate_online",
+        "title": {
+          "en": "The gate came online"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ]
+      },
+      {
+        "id": "gate_offline",
+        "title": {
+          "en": "The gate went offline"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "gate_is_state",
+        "title": {
+          "en": "The gate state is !{{|not}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          },
+          {
+            "type": "dropdown",
+            "name": "state",
+            "title": {
+              "en": "State"
+            },
+            "values": [
+              {
+                "id": "closed",
+                "title": {
+                  "en": "Closed"
+                }
+              },
+              {
+                "id": "open",
+                "title": {
+                  "en": "Open"
+                }
+              },
+              {
+                "id": "opening",
+                "title": {
+                  "en": "Opening"
+                }
+              },
+              {
+                "id": "closing",
+                "title": {
+                  "en": "Closing"
+                }
+              },
+              {
+                "id": "stopped",
+                "title": {
+                  "en": "Stopped"
+                }
+              },
+              {
+                "id": "unknown",
+                "title": {
+                  "en": "Unknown"
+                }
+              }
+            ]
+          }
+        ],
+        "titleFormatted": {
+          "en": "The gate state is [[state]]"
+        }
+      },
+      {
+        "id": "gate_is_online",
+        "title": {
+          "en": "The gate is !{{online|offline}}"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "open_gate",
+        "title": {
+          "en": "Open the gate"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ]
+      },
+      {
+        "id": "close_gate",
+        "title": {
+          "en": "Close the gate"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ]
+      },
+      {
+        "id": "stop_gate",
+        "title": {
+          "en": "Stop the gate"
+        },
+        "highlight": true,
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ]
+      },
+      {
+        "id": "refresh_gate",
+        "title": {
+          "en": "Refresh gate status"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=gate"
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "XHouse Gate (EGA/EGB)"
+      },
+      "class": "garagedoor",
+      "connectivity": [
+        "cloud"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "settings": [
+        {
+          "id": "refresh_interval",
+          "type": "number",
+          "label": {
+            "en": "Refresh interval (seconds)"
+          },
+          "hint": {
+            "en": "Normal polling interval. After a command the app temporarily polls every 2 seconds."
+          },
+          "value": 30,
+          "attr": {
+            "min": 5,
+            "max": 300,
+            "step": 5
+          }
+        },
+        {
+          "id": "debug_mode",
+          "type": "checkbox",
+          "label": {
+            "en": "Debug logging"
+          },
+          "hint": {
+            "en": "Enable only while troubleshooting."
+          },
+          "value": false
+        }
+      ],
+      "pair": [
+        {
+          "id": "login",
+          "template": "login_credentials",
+          "options": {
+            "logo": "logo.svg",
+            "usernameLabel": {
+              "en": "XHouse email"
+            },
+            "usernamePlaceholder": {
+              "en": "name@example.com"
+            },
+            "passwordLabel": {
+              "en": "XHouse password"
+            },
+            "passwordPlaceholder": {
+              "en": "Password"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": false
+          },
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login",
+          "template": "login_credentials",
+          "options": {
+            "logo": "logo.svg",
+            "usernameLabel": {
+              "en": "XHouse email"
+            },
+            "usernamePlaceholder": {
+              "en": "name@example.com"
+            },
+            "passwordLabel": {
+              "en": "XHouse password"
+            },
+            "passwordPlaceholder": {
+              "en": "Password"
+            }
+          }
+        }
+      ],
+      "capabilities": [
+        "garagedoor_closed",
+        "windowcoverings_state",
+        "xhouse_gate_state",
+        "xhouse_position",
+        "xhouse_left_position",
+        "xhouse_right_position"
+      ],
+      "capabilitiesOptions": {
+        "garagedoor_closed": {
+          "title": {
+            "en": "Gate closed"
+          }
+        },
+        "windowcoverings_state": {
+          "title": {
+            "en": "Gate control"
+          }
+        }
+      },
+      "images": {
+        "small": "/drivers/gate/assets/images/small.png",
+        "large": "/drivers/gate/assets/images/large.png",
+        "xlarge": "/drivers/gate/assets/images/xlarge.png"
+      },
+      "id": "gate"
+    },
+    {
+      "name": {
+        "en": "XHouse Garage Opener (XH-SGC01)"
+      },
+      "class": "garagedoor",
+      "connectivity": [
+        "cloud"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "settings": [
+        {
+          "id": "refresh_interval",
+          "type": "number",
+          "label": {
+            "en": "Refresh interval (seconds)"
+          },
+          "hint": {
+            "en": "Normal polling interval. After a command the app temporarily polls every 2 seconds."
+          },
+          "value": 30,
+          "attr": {
+            "min": 5,
+            "max": 300,
+            "step": 5
+          }
+        },
+        {
+          "id": "debug_mode",
+          "type": "checkbox",
+          "label": {
+            "en": "Debug logging"
+          },
+          "hint": {
+            "en": "Enable only while troubleshooting."
+          },
+          "value": false
+        }
+      ],
+      "pair": [
+        {
+          "id": "login",
+          "template": "login_credentials",
+          "options": {
+            "logo": "logo.svg",
+            "usernameLabel": {
+              "en": "XHouse email"
+            },
+            "usernamePlaceholder": {
+              "en": "name@example.com"
+            },
+            "passwordLabel": {
+              "en": "XHouse password"
+            },
+            "passwordPlaceholder": {
+              "en": "Password"
+            }
+          }
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "options": {
+            "singular": false
+          },
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login",
+          "template": "login_credentials",
+          "options": {
+            "logo": "logo.svg",
+            "usernameLabel": {
+              "en": "XHouse email"
+            },
+            "usernamePlaceholder": {
+              "en": "name@example.com"
+            },
+            "passwordLabel": {
+              "en": "XHouse password"
+            },
+            "passwordPlaceholder": {
+              "en": "Password"
+            }
+          }
+        }
+      ],
+      "capabilities": [
+        "garagedoor_closed",
+        "xhouse_gate_state",
+        "xhouse_position"
+      ],
+      "capabilitiesOptions": {
+        "garagedoor_closed": {
+          "title": {
+            "en": "Garage door closed"
+          }
+        }
+      },
+      "images": {
+        "small": "/drivers/garage/assets/images/small.png",
+        "large": "/drivers/garage/assets/images/large.png",
+        "xlarge": "/drivers/garage/assets/images/xlarge.png"
+      },
+      "id": "garage"
+    }
+  ],
+  "contributors": {
+    "developers": [
+      {
+        "name": "Ben Anderson",
+        "website": "https://github.com/BenJamesAndo/XHouse-IoT-Controller"
+      }
+    ]
+  }
+}

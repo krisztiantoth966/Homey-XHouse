@@ -1,0 +1,16 @@
+{
+  "pair": {
+    "missing_credentials": "Enter the XHouse email and password.",
+    "login_failed": "XHouse login failed.",
+    "login_first": "Sign in to XHouse first.",
+    "device_not_found": "The paired device was not found in this XHouse account."
+  },
+  "errors": {
+    "invalid_refresh_interval": "The refresh interval must be between 5 and 300 seconds.",
+    "repair_required": "XHouse credentials are missing. Repair the device in Homey.",
+    "device_offline": "The XHouse device is offline.",
+    "authentication_failed": "XHouse authentication failed. Repair the device in Homey.",
+    "connection_failed": "XHouse connection failed.",
+    "stop_not_supported": "This XHouse controller does not support the Stop command."
+  }
+}
